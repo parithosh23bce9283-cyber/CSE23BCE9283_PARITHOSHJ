@@ -1,0 +1,232 @@
+Q1. db.employees.insertOne({empId:106,name:"raji",age:27,department:"HR",salary:52000,city:"Hyderabad",experience:4,skills:["SEO","Content Writing"],active:true})
+
+Q2. db.employees.insertMany([{empId:107,name:"Vikram",age:29,department:"Sales",salary:48000,city:"Pune",experience:5,skills:["Negotiation","CRM"],active:true},{empId:108,name:"Meera",age:31,department:"Finance",salary:62000,city:"Mumbai",experience:7,skills:["Accounting","Taxation"],active:true}])
+
+Q3. db.employees.findOne({department:"IT"})
+
+Q4. db.employees.find()
+
+Q5. db.employees.find({},{_id:0,name:1,salary:1})
+
+Q6. db.employees.find({salary:50000})
+
+Q7. db.employees.find({salary:{$lt:60000}})
+
+Q8. db.employees.find({salary:{$gte:60000}})
+
+Q9. db.employees.find({age:{$ne:30}})
+
+Q10. db.employees.find({$or:[{city:"Chennai"},{city:"Mumbai"}]})
+
+Q11. db.employees.find({city:{$ne:"Chennai"}})
+
+Q12. db.employees.find({department:"IT",salary:{$gt:50000}})
+
+Q13. db.employees.find({$or:[{city:"Chennai"},{city:"Bangalore"}]})
+
+Q14. db.employees.find({salary:{$not:{$gt:60000}}})
+
+Q15. db.employees.find({department:{$nin:["IT","HR"]}})
+
+Q16. db.employees.find({experience:{$exists:true}})
+
+Q17. db.employees.find({salary:{$type:"int"}})
+
+Q18. db.employees.find({skills:"MongoDB"})
+
+Q19. db.employees.find({skills:{$all:["MongoDB","AWS"]}})
+
+Q20. db.employees.find({skills:{$size:3}})
+
+Q21. db.employees.find({skills:{$elemMatch:{$eq:"Java"}}})
+
+Q22. db.employees.find().sort({salary:-1})
+
+Q23. db.employees.find().sort({salary:-1}).limit(3)
+
+Q24. db.employees.updateOne({empId:101},{$inc:{salary:5000}})
+
+Q25. db.employees.updateMany({department:"IT"},{$mul:{salary:1.1}})
+
+
+1.{
+  acknowledged: true,
+  insertedId: ObjectId("65cbcfb2e4b0c2a123456789") 
+}
+
+2.{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("65cbcfb2e4b0c2a12345678a"),
+    '1': ObjectId("65cbcfb2e4b0c2a12345678b")
+  }
+}
+
+3.{ empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java", "MongoDB", "Spring"], active: true }
+
+4.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true },
+  { empId: 102, name: "Priya", age: 28, department: "HR", salary: 55000, city: "Bangalore", experience: 5, skills: ["Recruitment","Training"], active: true },
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 104, name: "Sneha", age: 26, department: "Finance", salary: 50000, city: "Delhi", experience: 4, skills: ["Excel","Taxation"], active: false },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true },
+  { empId: 106, name: "raji", age: 27, department: "HR", salary: 52000, city: "Hyderabad", experience: 4, skills: ["SEO","Content Writing"], active: true },
+  { empId: 107, name: "Vikram", age: 29, department: "Sales", salary: 48000, city: "Pune", experience: 5, skills: ["Negotiation","CRM"], active: true },
+  { empId: 108, name: "Meera", age: 31, department: "Finance", salary: 62000, city: "Mumbai", experience: 7, skills: ["Accounting","Taxation"], active: true }
+]
+
+5.[
+  { name: "Arun", salary: 45000 },
+  { name: "Priya", salary: 55000 },
+  { name: "Rahul", salary: 75000 },
+  { name: "Sneha", salary: 50000 },
+  { name: "Karthik", salary: 68000 },
+  { name: "raji", salary: 52000 },
+  { name: "Vikram", salary: 48000 },
+  { name: "Meera", salary: 62000 }
+]
+
+6.[
+  { empId: 104, name: "Sneha", age: 26, department: "Finance", salary: 50000, city: "Delhi", experience: 4, skills: ["Excel","Taxation"], active: false }
+]
+
+7.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true },
+  { empId: 102, name: "Priya", age: 28, department: "HR", salary: 55000, city: "Bangalore", experience: 5, skills: ["Recruitment","Training"], active: true },
+  { empId: 104, name: "Sneha", age: 26, department: "Finance", salary: 50000, city: "Delhi", experience: 4, skills: ["Excel","Taxation"], active: false },
+  { empId: 106, name: "raji", age: 27, department: "HR", salary: 52000, city: "Hyderabad", experience: 4, skills: ["SEO","Content Writing"], active: true },
+  { empId: 107, name: "Vikram", age: 29, department: "Sales", salary: 48000, city: "Pune", experience: 5, skills: ["Negotiation","CRM"], active: true }
+]
+
+]
+
+8.[
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true },
+  { empId: 108, name: "Meera", age: 31, department: "Finance", salary: 62000, city: "Mumbai", experience: 7, skills: ["Accounting","Taxation"], active: true }
+]
+
+9.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true },
+  { empId: 102, name: "Priya", age: 28, department: "HR", salary: 55000, city: "Bangalore", experience: 5, skills: ["Recruitment","Training"], active: true },
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 104, name: "Sneha", age: 26, department: "Finance", salary: 50000, city: "Delhi", experience: 4, skills: ["Excel","Taxation"], active: false },
+  { empId: 106, name: "raji", age: 27, department: "HR", salary: 52000, city: "Hyderabad", experience: 4, skills: ["SEO","Content Writing"], active: true },
+  { empId: 107, name: "Vikram", age: 29, department: "Sales", salary: 48000, city: "Pune", experience: 5, skills: ["Negotiation","CRM"], active: true },
+  { empId: 108, name: "Meera", age: 31, department: "Finance", salary: 62000, city: "Mumbai", experience: 7, skills: ["Accounting","Taxation"], active: true }
+]
+
+10.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true },
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true },
+  { empId: 108, name: "Meera", age: 31, department: "Finance", salary: 62000, city: "Mumbai", experience: 7, skills: ["Accounting","Taxation"], active: true }
+]
+
+11.[
+  { empId: 102, name: "Priya", age: 28, department: "HR", salary: 55000, city: "Bangalore", experience: 5, skills: ["Recruitment","Training"], active: true },
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 104, name: "Sneha", age: 26, department: "Finance", salary: 50000, city: "Delhi", experience: 4, skills: ["Excel","Taxation"], active: false },
+  { empId: 106, name: "raji", age: 27, department: "HR", salary: 52000, city: "Hyderabad", experience: 4, skills: ["SEO","Content Writing"], active: true },
+  { empId: 107, name: "Vikram", age: 29, department: "Sales", salary: 48000, city: "Pune", experience: 5, skills: ["Negotiation","CRM"], active: true },
+  { empId: 108, name: "Meera", age: 31, department: "Finance", salary: 62000, city: "Mumbai", experience: 7, skills: ["Accounting","Taxation"], active: true }
+]
+
+12.[
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true }
+]
+
+13.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true },
+  { empId: 102, name: "Priya", age: 28, department: "HR", salary: 55000, city: "Bangalore", experience: 5, skills: ["Recruitment","Training"], active: true },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true }
+]
+
+14.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true },
+  { empId: 102, name: "Priya", age: 28, department: "HR", salary: 55000, city: "Bangalore", experience: 5, skills: ["Recruitment","Training"], active: true },
+  { empId: 104, name: "Sneha", age: 26, department: "Finance", salary: 50000, city: "Delhi", experience: 4, skills: ["Excel","Taxation"], active: false },
+  { empId: 106, name: "raji", age: 27, department: "HR", salary: 52000, city: "Hyderabad", experience: 4, skills: ["SEO","Content Writing"], active: true },
+  { empId: 107, name: "Vikram", age: 29, department: "Sales", salary: 48000, city: "Pune", experience: 5, skills: ["Negotiation","CRM"], active: true }
+]
+
+15.[
+  { empId: 104, name: "Sneha", age: 26, department: "Finance", salary: 50000, city: "Delhi", experience: 4, skills: ["Excel","Taxation"], active: false },
+  { empId: 107, name: "Vikram", age: 29, department: "Sales", salary: 48000, city: "Pune", experience: 5, skills: ["Negotiation","CRM"], active: true },
+  { empId: 108, name: "Meera", age: 31, department: "Finance", salary: 62000, city: "Mumbai", experience: 7, skills: ["Accounting","Taxation"], active: true }
+]
+
+16.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true },
+  { empId: 102, name: "Priya", age: 28, department: "HR", salary: 55000, city: "Bangalore", experience: 5, skills: ["Recruitment","Training"], active: true },
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 104, name: "Sneha", age: 26, department: "Finance", salary: 50000, city: "Delhi", experience: 4, skills: ["Excel","Taxation"], active: false },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true },
+  { empId: 106, name: "raji", age: 27, department: "HR", salary: 52000, city: "Hyderabad", experience: 4, skills: ["SEO","Content Writing"], active: true },
+  { empId: 107, name: "Vikram", age: 29, department: "Sales", salary: 48000, city: "Pune", experience: 5, skills: ["Negotiation","CRM"], active: true },
+  { empId: 108, name: "Meera", age: 31, department: "Finance", salary: 62000, city: "Mumbai", experience: 7, skills: ["Accounting","Taxation"], active: true }
+]
+
+17.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true },
+  { empId: 102, name: "Priya", age: 28, department: "HR", salary: 55000, city: "Bangalore", experience: 5, skills: ["Recruitment","Training"], active: true },
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 104, name: "Sneha", age: 26, department: "Finance", salary: 50000, city: "Delhi", experience: 4, skills: ["Excel","Taxation"], active: false },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true },
+  { empId: 106, name: "raji", age: 27, department: "HR", salary: 52000, city: "Hyderabad", experience: 4, skills: ["SEO","Content Writing"], active: true },
+  { empId: 107, name: "Vikram", age: 29, department: "Sales", salary: 48000, city: "Pune", experience: 5, skills: ["Negotiation","CRM"], active: true },
+  { empId: 108, name: "Meera", age: 31, department: "Finance", salary: 62000, city: "Mumbai", experience: 7, skills: ["Accounting","Taxation"], active: true }
+]
+
+18.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true },
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true }
+]
+
+19.[
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true }
+]
+
+20.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true },
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true }
+]
+
+21.[
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true }
+]
+
+22.[
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true },
+  { empId: 108, name: "Meera", age: 31, department: "Finance", salary: 62000, city: "Mumbai", experience: 7, skills: ["Accounting","Taxation"], active: true },
+  { empId: 102, name: "Priya", age: 28, department: "HR", salary: 55000, city: "Bangalore", experience: 5, skills: ["Recruitment","Training"], active: true },
+  { empId: 106, name: "raji", age: 27, department: "HR", salary: 52000, city: "Hyderabad", experience: 4, skills: ["SEO","Content Writing"], active: true },
+  { empId: 104, name: "Sneha", age: 26, department: "Finance", salary: 50000, city: "Delhi", experience: 4, skills: ["Excel","Taxation"], active: false },
+  { empId: 107, name: "Vikram", age: 29, department: "Sales", salary: 48000, city: "Pune", experience: 5, skills: ["Negotiation","CRM"], active: true },
+  { empId: 101, name: "Arun", age: 25, department: "IT", salary: 45000, city: "Chennai", experience: 3, skills: ["Java","MongoDB","Spring"], active: true }
+]
+
+23.[
+  { empId: 103, name: "Rahul", age: 32, department: "IT", salary: 75000, city: "Mumbai", experience: 8, skills: ["Python","MongoDB","AWS"], active: true },
+  { empId: 105, name: "Karthik", age: 30, department: "IT", salary: 68000, city: "Chennai", experience: 7, skills: ["NodeJS","MongoDB","React"], active: true },
+  { empId: 108, name: "Meera", age: 31, department: "Finance", salary: 62000, city: "Mumbai", experience: 7, skills: ["Accounting","Taxation"], active: true }
+]
+
+24.{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1
+}
+
+25.{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3
+}
+
